@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10110f">
+  <meta name="description" content="Personal portfolio of an aspiring developer exploring software, AI, and ambitious ideas.">
+  <title>Muhammed Sahal — Builder in Progress</title>
+  <style>
+    :root {
+      --bg: #10110f;
+      --panel: #171916;
+      --panel-2: #1d201b;
+      --text: #f1f2ec;
+      --muted: #a2a79c;
+      --line: rgba(241,242,236,.13);
+      --lime: #caff70;
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .nav {
+      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(18px);
+      background: rgba(16,17,15,.78); border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { height: 72px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:-.04em; }
+    .mark { display:grid; place-items:center; width:30px; height:30px; background:var(--lime); color:#111; border-radius:9px; font-size:14px; }
+    .nav-links { display:flex; align-items:center; gap:26px; color:var(--muted); font-size:13px; }
+    .nav-links a:hover { color:var(--lime); }
+    .nav-cta { border:1px solid var(--line); padding:9px 14px; border-radius:999px; color:var(--text)!important; }
+    .hero { padding: 100px 0 72px; position:relative; overflow:hidden; }
+    .hero:before {
+      content:""; position:absolute; width:480px; height:480px; right:-100px; top:25px; pointer-events:none;
+      background:radial-gradient(circle, rgba(202,255,112,.12), transparent 68%);
+    }
+    .eyebrow { display:flex; align-items:center; gap:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.16em; font-size:11px; font-weight:700; }
+    .dot { width:7px; height:7px; background:var(--lime); border-radius:50%; box-shadow:0 0 16px rgba(202,255,112,.7); }
+    h1 { font-size:clamp(54px, 9vw, 112px); line-height:.98; letter-spacing:-.085em; margin:25px 0 24px; max-width:900px; font-weight:750; }
+    h1 .accent { color:var(--lime); }
+    .hero-copy { max-width:590px; color:#b6bbb0; font-size:clamp(16px, 2vw, 19px); }
+    .hero-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:30px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:13px 18px; border-radius:12px; font-size:13px; font-weight:750; transition:transform .2s, background .2s; }
+    .btn:hover { transform:translateY(-2px); }
+    .btn-primary { background:var(--lime); color:#11130e; }
+    .btn-secondary { border:1px solid var(--line); background:rgba(255,255,255,.02); }
+    .hero-foot { display:flex; align-items:center; justify-content:space-between; gap:18px; margin-top:78px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:12px; }
+    .hero-foot strong { color:var(--text); font-weight:600; }
+    .section { padding:72px 0; }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:24px; margin-bottom:28px; }
+    .kicker { color:var(--lime); text-transform:uppercase; letter-spacing:.16em; font-size:11px; font-weight:800; }
+    h2 { margin:8px 0 0; font-size:clamp(32px, 5vw, 54px); line-height:1.05; letter-spacing:-.065em; }
+    .section-intro { color:var(--muted); max-width:380px; font-size:14px; }
+    .projects { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px; }
+    .project {
+      background:var(--panel); border:1px solid var(--line); border-radius:20px; overflow:hidden;
+      min-height:310px; display:flex; flex-direction:column; transition:transform .25s,border-color .25s;
+    }
+    .project:hover { transform:translateY(-4px); border-color:rgba(202,255,112,.4); }
+    .project-art { min-height:150px; position:relative; overflow:hidden; background:#20241d; display:flex; align-items:center; justify-content:center; }
+    .project-art.grid-art { background:radial-gradient(circle at 50% 50%, #313b25, #1b2018 65%); }
+    .grid-symbol { width:92px; height:92px; display:grid; grid-template-columns:repeat(2,1fr); gap:7px; transform:rotate(-8deg); }
+    .grid-symbol span { background:var(--lime); border-radius:8px; opacity:.92; }
+    .grid-symbol span:nth-child(2) { opacity:.48; }
+    .grid-symbol span:nth-child(3) { opacity:.68; }
+    .project-art.explore-art { background:linear-gradient(135deg,#20252b,#171916); }
+    .orbit { position:absolute; width:190px; height:90px; border:1px solid rgba(202,255,112,.42); border-radius:50%; transform:rotate(-28deg); }
+    .orbit:nth-child(2) { transform:rotate(28deg); width:130px; }
+    .orbit-dot { width:14px;height:14px;background:var(--lime);border-radius:50%;position:absolute;box-shadow:0 0 25px rgba(202,255,112,.5); }
+    .project-label { position:absolute; top:14px; left:16px; color:#b7bdb0; font-size:10px; letter-spacing:.13em; text-transform:uppercase; }
+    .project-body { padding:22px; display:flex; flex-direction:column; flex:1; }
+    .project-top { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+    .project h3 { margin:0; font-size:23px; letter-spacing:-.045em; }
+    .status { color:var(--lime); border:1px solid rgba(202,255,112,.25); border-radius:999px; padding:4px 8px; font-size:10px; white-space:nowrap; }
+    .project p { color:var(--muted); font-size:13px; margin:10px 0 18px; }
+    .tags { display:flex; flex-wrap:wrap; gap:7px; margin-top:auto; }
+    .tag { padding:5px 9px; border-radius:7px; background:rgba(255,255,255,.045); color:#c5c9c0; font-size:10px; }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .about-card { padding:26px; background:var(--panel); border:1px solid var(--line); border-radius:20px; }
+    .about-card h3 { font-size:19px; letter-spacing:-.04em; margin:0 0 12px; }
+    .about-card p { color:var(--muted); font-size:14px; margin:0; }
+    .interest-list { display:flex; flex-wrap:wrap; gap:9px; margin-top:20px; }
+    .interest { border:1px solid var(--line); padding:8px 11px; border-radius:10px; font-size:12px; color:#d4d8cf; }
+    .now-list { list-style:none; padding:0; margin:0; }
+    .now-list li { display:flex; gap:12px; padding:11px 0; border-bottom:1px solid var(--line); color:#c9cec4; font-size:13px; }
+    .now-list li:last-child { border-bottom:0; }
+    .now-list .bullet { color:var(--lime); }
+    .contact-box { border:1px solid var(--line); border-radius:24px; padding:clamp(26px,5vw,52px); background:linear-gradient(120deg,#1c2117,#151714 62%); display:flex; align-items:end; justify-content:space-between; gap:30px; }
+    .contact-box h2 { max-width:650px; }
+    .contact-box p { color:var(--muted); max-width:460px; }
+    .contact-actions { display:flex; flex-direction:column; gap:10px; min-width:150px; }
+    footer { padding:28px 0 38px; color:var(--muted); font-size:11px; }
+    .footer-inner { display:flex; justify-content:space-between; gap:16px; border-top:1px solid var(--line); padding-top:22px; }
+    .reveal { opacity:0; transform:translateY(16px); transition:opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    @media (prefers-reduced-motion: reduce) { html{scroll-behavior:auto} *,*::before,*::after{transition:none!important;animation:none!important} .reveal{opacity:1;transform:none} }
+    @media (max-width:700px) {
+      .wrap { width:min(100% - 28px,var(--max)); }
+      .nav-inner { height:62px; }
+      .nav-links { gap:14px; font-size:12px; }
+      .nav-links a:not(.nav-cta) { display:none; }
+      .hero { padding:76px 0 48px; }
+      .hero-foot { margin-top:52px; align-items:start; flex-direction:column; }
+      .section { padding:52px 0; }
+      .section-head { align-items:start; flex-direction:column; gap:10px; }
+      .projects,.about-grid { grid-template-columns:1fr; }
+      .project { min-height:290px; }
+      .contact-box { align-items:start; flex-direction:column; }
+      .contact-actions { flex-direction:row; flex-wrap:wrap; }
+      .footer-inner { flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Home"><span class="mark">Y</span><span>Muhammed Sahal<span style="color:var(--lime)">.</span></span></a>
+      <div class="nav-links">
+        <a href="#work">Work</a><a href="#about">About</a><a href="#now">Now</a>
+        <a class="nav-cta" href="#contact">Get in touch ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div class="eyebrow"><span class="dot"></span> Student · Aspiring developer · Curious by default</div>
+      <h1 class="reveal">I’m here to<br>build <span class="accent">what’s next.</span></h1>
+      <p class="hero-copy reveal">I’m a student exploring software, AI, and product design. I like asking “what if?”, learning how things work, and turning ambitious ideas into real projects—one step at a time.</p>
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary" href="#work">Explore my work <span>↘</span></a>
+        <a class="btn btn-secondary" href="#about">A little about me</a>
+      </div>
+      <div class="hero-foot">
+        <span><strong>Currently:</strong> learning, experimenting, building</span>
+        <span><strong>Based in:</strong> Kerala, India</span>
+        <span><strong>Mindset:</strong> stay curious ↗</span>
+      </div>
+    </section>
+
+    <section class="section wrap" id="work">
+      <div class="section-head reveal">
+        <div><div class="kicker">Selected work / 01</div><h2>Ideas in motion.</h2></div>
+        <p class="section-intro">A small collection of experiments and ideas. This space will grow as I build, test, and learn.</p>
+      </div>
+      <div class="projects">
+        <article class="project reveal">
+          <div class="project-art grid-art">
+            <span class="project-label">01 / Product concept</span>
+            <div class="grid-symbol"><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="project-body">
+            <div class="project-top"><h3>GRID</h3><span class="status">In exploration</span></div>
+            <p>An early-stage startup idea exploring how thoughtful software and AI could help people solve real problems. Currently researching the problem and testing possible directions.</p>
+            <div class="tags"><span class="tag">Product thinking</span><span class="tag">AI concepts</span><span class="tag">Research</span></div>
+          </div>
+        </article>
+        <article class="project reveal">
+          <div class="project-art explore-art">
+            <span class="project-label">02 / Learning lab</span>
+            <div class="orbit"></div><div class="orbit"></div><span class="orbit-dot"></span>
+          </div>
+          <div class="project-body">
+            <div class="project-top"><h3>Build Log</h3><span class="status">Growing</span></div>
+            <p>A place to document what I learn in programming and technology, share small experiments, and turn lessons into things I can actually demonstrate.</p>
+            <div class="tags"><span class="tag">Web development</span><span class="tag">Learning</span><span class="tag">Experiments</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="about">
+      <div class="section-head reveal">
+        <div><div class="kicker">A bit about me / 02</div><h2>Curiosity is the starting point.</h2></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-card reveal">
+          <h3>Not an expert. A builder in progress.</h3>
+          <p>I’m at the beginning of my tech journey, and I’m using that as a reason to experiment more—not to wait until I know everything. I care about understanding the problem, making something useful, and improving it with feedback.</p>
+          <div class="interest-list"><span class="interest">Computer science</span><span class="interest">AI & software</span><span class="interest">Product design</span><span class="interest">Startups</span></div>
+        </div>
+        <div class="about-card reveal" id="now">
+          <h3>What I’m focused on now</h3>
+          <ul class="now-list">
+            <li><span class="bullet">↗</span><span>Learning the fundamentals of building websites.</span></li>
+            <li><span class="bullet">↗</span><span>Exploring how AI can solve specific, useful problems.</span></li>
+            <li><span class="bullet">↗</span><span>Developing GRID from an idea into something testable.</span></li>
+            <li><span class="bullet">↗</span><span>Sharing progress honestly, including what doesn’t work.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="contact">
+      <div class="contact-box reveal">
+        <div>
+          <div class="kicker">Open to good ideas / 03</div>
+          <h2>Have something worth building?</h2>
+          <p>I’m interested in meeting curious people, learning from feedback, and exploring ideas that could become useful products.</p>
+        </div>
+        <div class="contact-actions">
+          <!-- Replace these example links with your real contact details and public profiles before publishing. -->
+          <a class="btn btn-primary" href="https://github.com/" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a class="btn btn-secondary" href="mailto:voidframe62@gmail.com">Email me ↗</a>
+          <a class="btn btn-secondary" href="tel:+91 9744503505">Call / WhatsApp ↗</a>
+          <a class="btn btn-secondary" href="https://www.instagram.com/sahlrs_/" target="_blank" rel="noreferrer">Instagram ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div class="footer-inner"><span>© <span id="year"></span> Muhammed Sahal. Built with curiosity.</span><span>Made for the long game. ↗</span></div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const items = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      items.forEach((item) => observer.observe(item));
+    } else {
+      items.forEach((item) => item.classList.add('visible'));
+    }
+  </script>
+</body>
+</html>
